@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-ro
 
 // Components
 import Home from '../Home/Home'
-import FormsContainer from '../FormsContainer/FormsContainer'
+import ForumsContainer from '../ForumsContainer/ForumsContainer'
 import Chat from '../Chat/Chat'
+import Forum from '../Forum/Forum'
 
 // Style
 import '../../styles/App.css'
@@ -17,12 +18,13 @@ class App extends Component {
         <div>
           <nav>
             <Link to='/'>Agora</Link>
-            <Link to='/forms'>Forms</Link>
+            <Link to='/forums'>Forums</Link>
             <Link to='/chat'>Chat</Link>
           </nav>
           <main>
             <Switch>
-              <Route path='/forms' component={FormsContainer} />
+              <Route path='/forums/:id' component={Forum} />
+              <Route path='/forums' component={ForumsContainer} />
               <Route path='/chat' component={Chat} />
               <Route path='/' component={Home} />
               <Route path='/*' render={() => <Redirect to='/' />} />
