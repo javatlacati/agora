@@ -4,10 +4,6 @@
   "description": "An open forum for debates.",
   "main": "server.js",
   "private": true,
-  "engines": {
-    "node": "~9.3.0",
-    "npm": "~5.6.0"
-  },
   "dependencies": {
     "axios": "^0.17.0",
     "bcrypt-nodejs": "^0.0.3",
@@ -22,6 +18,8 @@
     "method-override": "^2.3.10",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
+    "npm-run-all": "^4.1.2",
+    "nsp": "^3.1.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
@@ -35,22 +33,31 @@
     "react-scripts": "1.0.14",
     "socket.io": "^2.0.4"
   },
+  "devDependencies": {
+    "localtunnel": "^1.8.3"
+  },
   "scripts": {
+    "prestart": "echo \"Starting...\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "node server.js"
+    "check-security": "nsp check",
+    "localtunnel": "lt --port 8000",
+    "server": "node server.js",
+    "start-server": "npm-run-all --parallel check-security server",
+    "start-all": "npm-run-all --parallel start-server start",
+    "share": "npm-run-all --parallel start-all localtunnel"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/maikelnabil/agora.git"
   },
   "keywords": [],
   "author": "Mike Nabil",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/maikelnabil/agora/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/maikelnabil/agora#readme"
 }
