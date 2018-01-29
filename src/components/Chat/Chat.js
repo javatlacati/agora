@@ -19,25 +19,25 @@ class Chat extends Component {
   }
 
   componentDidMount () {
-    socket.on('chat message', (msg) => {
-      this.setState({messages: this.state.messages.concat(msg)})
-    })
+    socket.on('initial messages', (messages) => { this.setState({messages: messages}) })
+    socket.on('chat message', (msg) => { this.setState({messages: this.state.messages.concat(msg)}) })
   }
 
   submitMessage (e) {
     e.preventDefault()
-    let msg = document.getElementById('message').value
-    socket.emit('chat message', msg)
-    document.getElementById('message').value = ''
+    socket.emit('chat message', e.target.firstElementChild.value)
+    e.target.firstElementChild.value = ''
   }
 
   render () {
-    let messages = this.state.messages.map((message, i) => (<li key={i}>{message}</li>))
+    let messages = this.state.messages.map((message, i) => (
+      <li key={i}>{message.body} - Created At: {message.createdAt}</li>
+    ))
     return (
       <div>
         <ul id='messages'>{messages}</ul>
-        <form action='' onSubmit={this.submitMessage}>
-          <input id='message' /><button>Send</button>
+        <form onSubmit={this.submitMessage}>
+          <input /><button>Send</button>
         </form>
       </div>
     )

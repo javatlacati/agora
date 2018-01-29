@@ -77,10 +77,18 @@ const ContributionSchema = new Schema({
   comment: {type: String, unique: false, required: true}
 })
 
+// The Messsages Schema
+const MessageSchema = new Schema({
+  body: { type: String, unique: false, required: true }
+}, {
+  timestamps: true
+})
+
 // Defining the models
 const User = mongoose.model('User', UserSchema)
 const Forum = mongoose.model('Forum', ForumSchema)
 const Contribution = mongoose.model('Contribution', ContributionSchema)
+const Message = mongoose.model('Message', MessageSchema)
 
 // Exporting
-module.exports = { mongoose, User, Forum, Contribution }
+module.exports = { mongoose, User, Forum, Contribution, Message }

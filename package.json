@@ -38,15 +38,15 @@
   },
   "scripts": {
     "prestart": "echo \"Starting...\"",
-    "start": "react-scripts start",
+    "start": "PORT=5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "check-security": "nsp check",
     "localtunnel": "lt --port 8000",
     "server": "node server.js",
-    "start-server": "npm-run-all --parallel check-security server",
-    "start-all": "npm-run-all --parallel start-server start",
+    "start-server": "npm-run-all --parallel prestart server",
+    "start-all": "npm-run-all --parallel start start-server ",
     "share": "npm-run-all --parallel start-all localtunnel"
   },
   "repository": {

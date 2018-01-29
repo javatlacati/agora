@@ -2,7 +2,6 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const methodOverride = require('method-override')
 const passport = require('passport')
 const flash = require('connect-flash')
 const morgan = require('morgan')
@@ -18,27 +17,17 @@ const app = express()
 // CORS Configuration
 app.use(cors())
 
-// Configuring the Server
-app.listen(process.env.PORT, () => {
-  console.log(`The server is running on port ${process.env.PORT}`)
-})
-
-// Configuring Method-Override
-app.use(methodOverride('_method'))
-
 // Configure Morgan
 app.use(morgan('dev'))
 
 // configuring body-parser
 app.use(bodyParser.json()) // handles json post requests
-app.use(bodyParser.urlencoded({extended: true})) // handles form submission
 
 // Configure Passport
 app.use(cookieParser())
 app.use(session({
   secret: process.env.sessionSecert,
-  name: 'Agora.mikenabil.net',
-  // store: sessionStore, // connect-mongo session store
+  name: 'Agora.MikeNabil.net',
   proxy: true,
   resave: true,
   saveUninitialized: true
@@ -47,7 +36,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
-// Load Passport configuration
+// Load Passport configuration - Currently not working because of missing tokens
 // require('./config/passport')(passport)
 
 // Use Passport current user
@@ -65,11 +54,25 @@ app.use(routes)
 const server = http.createServer(app)
 const io = socketIO.listen(server)
 
+// Schema & Model for Socket.io
+const Schema = require('./db/schema.js')
+const Message = Schema.Message
+
+// Socket.io Users
+let users = 0
+
 // Socket.io Connection
 io.on('connection', (socket) => {
-  socket.on('chat message', (msg) => io.emit('chat message', msg))
-  socket.on('disconnect', () => console.log('user disconnected'))
+  users++
+  console.log(`${users} users connected.`)
+  Message.find({}).then(messages => { io.emit('initial messages', messages) })
+  socket.on('chat message', (msg) => { Message.create({body: msg}).then((msg) => io.emit('chat message', msg)) })
+  socket.on('disconnect', () => { users--; console.log(`1 User disconnected. ${users} Users remain connected.`) })
 })
+
+// Configuring the Server
+// app.listen(process.env.PORT, () => { console.log(`The server is running on port ${process.env.PORT}`) })
+server.listen(process.env.PORT, () => { console.log(`The server is running on port ${process.env.PORT}`) })
 
 // Errors formatting
 app.use(require('better-express-errors')(app))
