@@ -37,7 +37,7 @@ app.use(passport.session())
 app.use(flash())
 
 // Load Passport configuration - Currently not working because of missing tokens
-// require('./config/passport')(passport)
+require('./config/passport')(passport)
 
 // Use Passport current user
 app.use(function (req, res, next) {
@@ -49,6 +49,7 @@ app.use(function (req, res, next) {
 // Routes
 const routes = require('./config/routes')
 app.use(routes)
+// app.use('/', passport.authenticate('jwt', { session: false }), routes)
 
 // Socket.io Configuration
 const server = http.createServer(app)
