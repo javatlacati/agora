@@ -13,14 +13,14 @@ const Contribution = Schema.Contribution
 // Seeding the database
 User.remove({}).then(function () {
   User.collection.insert(userData).then(function () {
-    // process.exit()
+    process.exit()
   })
 })
 
 // Clear the database
 Forum.remove({}).then(function () {
   Forum.collection.insert(forumData).then(function () {
-    // process.exit()
+    process.exit()
   })
 })
 
