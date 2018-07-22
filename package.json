@@ -20,7 +20,6 @@
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
     "npm-run-all": "^4.1.2",
-    "nsp": "^3.1.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
@@ -29,27 +28,29 @@
     "passport-local-mongoose": "^4.5.0",
     "passport-twitter": "^1.0.4",
     "prop-types": "^15.6.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-materialize": "^1.0.16",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "socket.io": "^2.0.4"
-  },
-  "devDependencies": {
+    "nsp": "^3.1.0",
     "localtunnel": "^1.8.3"
   },
   "scripts": {
-    "prestart": "echo \"Starting...\"",
-    "start-react": "PORT=5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "check-security": "nsp check",
     "localtunnel": "lt --port 8000",
+    "prestart": "echo \"Starting...\"",
+    "start-react": "PORT=5000 react-scripts start",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "start-server": "npm-run-all --parallel prestart server",
-    "start-all": "npm-run-all --parallel start start-server ",
+    "start-all": "npm-run-all --parallel start-react start-server ",
     "share": "npm-run-all --parallel start-all localtunnel"
   },
   "repository": {

@@ -40,12 +40,10 @@ module.exports = function (passport) {
       passwordField: 'password'
     },
     function (email, password, done) {
-      console.log('I am here')
       User.findOne({'local.email': email}, (err, user) => {
         if (user) { return done(null, false, { message: 'email address already in use' }) }
         if (err) { return done(err, false, { message: 'something went' }) }
         if (!user) {
-          console.log('I am here again')
           var newUser = new User()
           newUser.local.email = email
           newUser.local.password = newUser.encrypt(password)
