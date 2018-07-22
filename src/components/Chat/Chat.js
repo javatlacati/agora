@@ -1,13 +1,13 @@
 // React % Socket.io
 import React, { Component } from 'react'
-// import openSocket from 'socket.io-client'
-// import API_URL from '../../URLS.js'
+import openSocket from 'socket.io-client'
+import API_URL from '../../URLS.js'
 
 // Style
 import '../../styles/Chat.css'
 
 // Socket connection
-// const socket = openSocket(API_URL)
+const socket = openSocket(API_URL)
 
 // Chat Component
 class Chat extends Component {
@@ -19,16 +19,16 @@ class Chat extends Component {
     this.submitMessage = this.submitMessage.bind(this)
   }
 
-  // componentDidMount () {
-  //   socket.on('initial messages', (messages) => { this.setState({messages: messages}) })
-  //   socket.on('chat message', (msg) => { this.setState({messages: this.state.messages.concat(msg)}) })
-  // }
+  componentDidMount () {
+    socket.on('initial messages', (messages) => { this.setState({messages: messages}) })
+    socket.on('chat message', (msg) => { this.setState({messages: this.state.messages.concat(msg)}) })
+  }
 
-  // submitMessage (e) {
-  //   e.preventDefault()
-  //   socket.emit('chat message', e.target.firstElementChild.value)
-  //   e.target.firstElementChild.value = ''
-  // }
+  submitMessage (e) {
+    e.preventDefault()
+    socket.emit('chat message', e.target.firstElementChild.value)
+    e.target.firstElementChild.value = ''
+  }
 
   render () {
     let messages = this.state.messages.map((message, i) => (
