@@ -42,7 +42,7 @@ class App extends Component {
               <Route path='/forums' component={ForumsContainer} />
               <Route path='/chat' component={Chat} />
               <Route path='/' component={Home} />
-              <Route path='/*' render={() => <Redirect to='/' />} />
+              {/* <Route path='/*' render={() => <Redirect to='/' />} /> */}
             </Switch>
           </main>
         </div>

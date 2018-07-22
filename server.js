@@ -8,6 +8,7 @@ const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const http = require('http')
+const path = require('path')
 const socketIO = require('socket.io')
 require('dotenv').config()
 
@@ -46,10 +47,14 @@ app.use(function (req, res, next) {
   next()
 })
 
+// Loading static assets
+app.use(express.static(path.join(__dirname, '/build')))
+
 // Routes
 const routes = require('./config/routes')
 app.use(routes)
 // app.use('/', passport.authenticate('jwt', { session: false }), routes)
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, '/build/index.html')) })
 
 // Socket.io Configuration
 const server = http.createServer(app)
