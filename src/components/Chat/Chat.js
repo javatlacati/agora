@@ -32,13 +32,24 @@ class Chat extends Component {
 
   render () {
     let messages = this.state.messages.map((message, i) => (
-      <li key={i}>{message.body} - Created At: {message.createdAt}</li>
+      <li key={i} className='collection-item avatar' >
+        <img src='https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png' alt='' className='circle' />
+        <span className='title'>Annonymous</span>
+        <p>{message.body} <br />
+          Created at: {message.createdAt}
+        </p>
+        <a href='#!' className='secondary-content'><i className='material-icons'>grade</i></a>
+      </li>
     ))
     return (
-      <div>
-        <ul id='messages'>{messages}</ul>
-        <form onSubmit={this.submitMessage}>
-          <input /><button>Send</button>
+      <div className='chat'>
+        <ul className='collection' id='messages'>{messages}</ul>
+        <form className='input-field' onSubmit={this.submitMessage}>
+          <input type='text' className='validate' />
+          <label className='active' for='first_name2'>Your Message</label>
+          <button class='btn waves-effect black right waves-light' type='submit' name='action'>
+            Submit<i className='material-icons right'>send</i>
+          </button>
         </form>
       </div>
     )

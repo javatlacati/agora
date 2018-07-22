@@ -3,11 +3,14 @@ import React, {Component} from 'react'
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
 // Components
-import Home from '../Home/Home'
+// import Authorization from '../Authorization/Authorization'
+import Forum from '../Forum/Forum'
 import ForumsContainer from '../ForumsContainer/ForumsContainer'
 import Chat from '../Chat/Chat'
-import Forum from '../Forum/Forum'
-import Authorization from '../Authorization/Authorization'
+import About from '../Static/About'
+import Terms from '../Static/Terms'
+import Privacy from '../Static/Privacy'
+import Home from '../Home/Home'
 
 // Style
 import {Navbar, NavItem} from 'react-materialize'
@@ -28,7 +31,7 @@ class App extends Component {
       <Router >
         <div >
           <Navbar brand='&nbsp;&nbsp;&nbsp;Agora' href='/' right className='black' >
-            <NavItem inactive='true'> Sign In </NavItem>
+            {/* <NavItem inactive='true'> Sign In </NavItem> */}
             <NavItem href='/forums'> Forums </NavItem>
             <NavItem href='/chat'> Chat </NavItem>
             <NavItem href='/about'> About </NavItem>
@@ -36,13 +39,16 @@ class App extends Component {
             <NavItem href='/privacy'> Privacy </NavItem>
           </Navbar>
           <main className='container' >
-            <Authorization />
+            {/* <Authorization /> */}
             <Switch >
               <Route path='/forums/:id' component={Forum} />
               <Route path='/forums' component={ForumsContainer} />
               <Route path='/chat' component={Chat} />
+              <Route path='/about' component={About} />
+              <Route path='/terms' component={Terms} />
+              <Route path='/privacy' component={Privacy} />
               <Route path='/' component={Home} />
-              <Route path='/*' render={() => <Redirect to='/' />} />
+              <Route path='/*' render={() => <Redirect from='*' to='/' />} />
             </Switch>
           </main>
         </div>
