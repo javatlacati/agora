@@ -11,8 +11,7 @@ module.exports = {
   // POST /signup
   postSignup (request, response, next) {
     passport.authenticate('local-signup', { session: false }, (err, user, info) => {
-      if (err || !user) { return response.json(info) }
-      if (user) {
+      if (err || !user) { return response.json(info) } else if (user) {
         request.login(user, { session: false }, (err) => {
           if (err) { response.send(err) }
           return response.json({

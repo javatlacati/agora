@@ -28,25 +28,19 @@ module.exports = {
 
   show (req, res) {
     Forum.findOne({_id: req.params.id}, (err, forum) => {
-      if (err) { res.json(err) }
-      if (!forum) { res.json('There is no Forum with this ID') }
-      if (forum) { res.json(forum) }
+      if (err) { res.json(err) } else if (!forum) { res.json('There is no Forum with this ID') } else if (forum) { res.json(forum) }
     })
   },
 
   update (req, res) {
     Forum.findOneAndUpdate({_id: req.params.id}, req.body.forum, {new: true}, (err, forum) => {
-      if (err) { res.json(err) }
-      if (!forum) { res.json('There is no Forum with this ID') }
-      if (forum) { res.json(forum) }
+      if (err) { res.json(err) } else if (!forum) { res.json('There is no Forum with this ID') } else if (forum) { res.json(forum) }
     })
   },
 
   destroy (req, res) {
     Forum.findOneAndRemove({_id: req.params.id}, (err, forum) => {
-      if (err) { res.json(err) }
-      if (!forum) { res.json('There is no Forum with this ID') }
-      if (forum) { res.json(forum) }
+      if (err) { res.json(err) } else if (!forum) { res.json('There is no Forum with this ID') } else if (forum) { res.json(forum) }
     })
   }
 }
