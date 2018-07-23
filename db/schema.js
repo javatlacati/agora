@@ -1,6 +1,7 @@
 // Initializing Mongoose
 const mongoose = require('mongoose')
-var bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcrypt-nodejs')
+const uuid = require('uuid/v1')
 
 // Overriding Mongoose Promise
 mongoose.Promise = Promise
@@ -60,12 +61,16 @@ UserSchema.methods.encrypt = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
+// function getId () {
+//   return db.forums.find().count() + 1000001
+// }
+
 // The Forum Schema
 const ForumSchema = new Schema({
-  id: {type: Number, unique: true, required: true},
+  // id: {type: Number, unique: true, required: true, default: getId},
+  uuid: {type: String, unique: true, required: true, default: uuid},
   title: {type: String, unique: false, required: true, maxlength: [50, `Error: Too long title. Titles shouldn't exceed 50 charachters`]},
   description: {type: String, unique: false, required: true},
-  contributions: {type: Array, unique: false, required: false},
   deleted: {type: Boolean, required: true, unique: false, default: false}
 }, {
   timestamps: true
@@ -73,13 +78,18 @@ const ForumSchema = new Schema({
 
 // The Contribution Schema
 const ContributionSchema = new Schema({
+  uuid: {type: String, unique: true, required: true, default: uuid},
   author: {type: String, unique: false, required: true},
-  comment: {type: String, unique: false, required: true}
+  comment: {type: String, unique: false, required: true},
+  forumId: {type: String, unique: false, required: true},
+  deleted: {type: Boolean, required: true, unique: false, default: false}
 })
 
 // The Messsages Schema
 const MessageSchema = new Schema({
-  body: { type: String, unique: false, required: true }
+  uuid: {type: String, unique: true, required: true, default: uuid},
+  body: {type: String, unique: false, required: true},
+  deleted: {type: Boolean, required: true, unique: false, default: false}
 }, {
   timestamps: true
 })

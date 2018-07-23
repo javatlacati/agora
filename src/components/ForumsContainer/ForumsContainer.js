@@ -29,12 +29,20 @@ class ForumsContainer extends Component {
 
   render () {
     let forums = this.state.forums.map((forum, index) => (
-      <li key={index}><a href={'/forums/' + forum._id}>{forum.title}</a></li>
+      <li key={index} className='collection-item'><a href={'/forums/' + forum._id}>{forum.title}</a></li>
     ))
     return (
       <div>
-        Here is a list of our forums:
-        <ul>
+        <button className='btn waves-effect waves-light black right' type='submit' name='action'>
+          <a href='/forums/new' className='white-text'>
+            Start A New Topic
+            <i className='material-icons right'>send</i>
+          </a>
+        </button>
+        <div className='clearfix' />
+
+        <h3>Here is a list of our forums:</h3>
+        <ul className='collection' >
           {forums}
         </ul>
       </div>

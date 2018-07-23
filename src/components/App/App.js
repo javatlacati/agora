@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom
 
 // Components
 // import Authorization from '../Authorization/Authorization'
+import NewTopic from '../NewTopic/NewTopic'
 import Forum from '../Forum/Forum'
 import ForumsContainer from '../ForumsContainer/ForumsContainer'
 import Chat from '../Chat/Chat'
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <Router >
         <div >
-          <Navbar brand='&nbsp;&nbsp;&nbsp;Agora' href='/' right className='black' >
+          <Navbar brand='&nbsp;&nbsp;&nbsp;Agora' href='/' right className='black nav' >
             {/* <NavItem inactive='true'> Sign In </NavItem> */}
             <NavItem href='/forums'> Forums </NavItem>
             <NavItem href='/chat'> Chat </NavItem>
@@ -41,6 +42,7 @@ class App extends Component {
           <main className='container' >
             {/* <Authorization /> */}
             <Switch >
+              <Route path='/forums/new' component={NewTopic} />
               <Route path='/forums/:id' component={Forum} />
               <Route path='/forums' component={ForumsContainer} />
               <Route path='/chat' component={Chat} />

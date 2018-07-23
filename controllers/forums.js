@@ -8,15 +8,21 @@ const Forum = Schema.Forum
 module.exports = {
   index (req, res) {
     Forum.find({}, (err, forums) => {
-      if (err) { res.json(err) }
-      if (forums) { res.json(forums) }
+      if (err) {
+        res.json(err)
+      } else if (forums) {
+        res.json(forums)
+      }
     })
   },
 
   post (req, res) {
     Forum.create(req.body.forum, (err, forum) => {
-      if (err) { res.json(err) }
-      if (forum) { res.json(forum) }
+      if (err) {
+        res.json(err)
+      } else if (forum) {
+        res.json(forum)
+      }
     })
   },
 
