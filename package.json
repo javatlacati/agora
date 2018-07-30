@@ -52,7 +52,8 @@
     "server": "nodemon server.js",
     "start-server": "npm-run-all --parallel prestart server",
     "start-all": "npm-run-all --parallel start-react start-server ",
-    "share": "npm-run-all --parallel start-all localtunnel"
+    "share": "npm-run-all --parallel start-all localtunnel",
+    "deploy": "echo \"Not Implemented Yet...\""
   },
   "repository": {
     "type": "git",
