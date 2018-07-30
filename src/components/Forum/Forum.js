@@ -2,6 +2,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+// Components
+import NewContribution from '../NewContribution/NewContribution'
+
 // API
 import API_URL from '../../URLS.js'
 
@@ -41,10 +44,12 @@ class Forum extends Component {
     return (
       <div>
         <ul>
-          <h1>Forum Title: {this.state.forum.title}</h1>
+          <h1>Topic: {this.state.forum.title}</h1>
+          <p>Description: {this.state.forum.description}</p>
           <ul>
             <h4>List of Contributions:</h4>
             {/* {contributions} */}
+            <NewContribution />
           </ul>
         </ul>
       </div>

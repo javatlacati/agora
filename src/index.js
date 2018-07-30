@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom'
-import registerServiceWorker from './registerServiceWorker'
+// import registerServiceWorker from './registerServiceWorker'
 
 // CSS
 import './styles/index.css'
@@ -15,4 +15,4 @@ import App from './components/App/App'
 ReactDOM.render(<App />, document.getElementById('root'))
 
 // Service Worker
-registerServiceWorker()
+// registerServiceWorker()

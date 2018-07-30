@@ -1,7 +1,7 @@
 // Initializing Mongoose
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
-const uuid = require('uuid/v1')
+// const uuid = require('uuid/v1')
 
 // Overriding Mongoose Promise
 mongoose.Promise = Promise
@@ -68,7 +68,7 @@ UserSchema.methods.encrypt = function (password) {
 // The Forum Schema
 const ForumSchema = new Schema({
   // id: {type: Number, unique: true, required: true, default: getId},
-  uuid: {type: String, unique: true, required: true, default: uuid},
+  // uuid: {type: String, unique: true, required: true, default: uuid},
   title: {type: String, unique: false, required: true, maxlength: [50, `Error: Too long title. Titles shouldn't exceed 50 charachters`]},
   description: {type: String, unique: false, required: true},
   deleted: {type: Boolean, required: true, unique: false, default: false}
@@ -78,7 +78,7 @@ const ForumSchema = new Schema({
 
 // The Contribution Schema
 const ContributionSchema = new Schema({
-  uuid: {type: String, unique: true, required: true, default: uuid},
+  // uuid: {type: String, unique: true, required: true, default: uuid},
   author: {type: String, unique: false, required: true},
   comment: {type: String, unique: false, required: true},
   forumId: {type: String, unique: false, required: true},
@@ -87,7 +87,7 @@ const ContributionSchema = new Schema({
 
 // The Messsages Schema
 const MessageSchema = new Schema({
-  uuid: {type: String, unique: true, required: true, default: uuid},
+  // uuid: {type: String, unique: true, required: true, default: uuid},
   body: {type: String, unique: false, required: true},
   deleted: {type: Boolean, required: true, unique: false, default: false}
 }, {

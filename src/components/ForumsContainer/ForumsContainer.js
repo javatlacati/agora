@@ -29,7 +29,10 @@ class ForumsContainer extends Component {
 
   render () {
     let forums = this.state.forums.map((forum, index) => (
-      <li key={index} className='collection-item'><a href={'/forums/' + forum._id}>{forum.title}</a></li>
+      <li key={index} className='collection-item'>
+        <a href={'/forums/' + forum._id}>{forum.title}</a>
+        <p>{forum.description}</p>
+      </li>
     ))
     return (
       <div>

@@ -1,20 +1,20 @@
 [{
     "title": "JS",
-    "description": "JS is the best!",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo officiis itaque, pariatur incidunt eius quasi possimus voluptatibus iste, ad libero est blanditiis laudantium totam provident, nobis quam facilis. Dolor, reiciendis.",
     "id": "1000001"
   },
   {
     "title": "HTML",
-    "description": "HTML is the best!",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo officiis itaque, pariatur incidunt eius quasi possimus voluptatibus iste, ad libero est blanditiis laudantium totam provident, nobis quam facilis. Dolor, reiciendis.",
     "id": "1000002"
   },
   {
     "title": "Ruby",
-      "description": "Ruby is the best!",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo officiis itaque, pariatur incidunt eius quasi possimus voluptatibus iste, ad libero est blanditiis laudantium totam provident, nobis quam facilis. Dolor, reiciendis.",
       "id": "1000003"
     },
   {
     "title": "Python",
-    "description": "Python is the best!",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo officiis itaque, pariatur incidunt eius quasi possimus voluptatibus iste, ad libero est blanditiis laudantium totam provident, nobis quam facilis. Dolor, reiciendis.",
     "id": "1000004"
 }]
