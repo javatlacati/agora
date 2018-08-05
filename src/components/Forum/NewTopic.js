@@ -1,15 +1,15 @@
 // Dependencies
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 
 // API
-import API_URL from '../../../URLS.js'
+import { API_URL } from '../../constants.js'
 
 // Style
-import './NewContribution.css'
+import './Forums.css'
 
 // Home Component
-class NewContribution extends Component {
+class NewTopic extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -31,23 +31,21 @@ class NewContribution extends Component {
     document.getElementById('title').disabled = true
     document.getElementById('description').disabled = true
     document.getElementById('submit-button').disabled = true
-    axios.post(API_URL + 'api/forums/', {
+    let forum = {
       forum: {
         'title': this.state.title,
         'description': this.state.description
       }
-    }).then((res) => {
-      console.log(res.data._id)
-      this.props.history.push('/forums/' + res.data._id)
-    //   return <Redirect to='/forums/'  />
-    })
+    }
+    axios.post(API_URL + 'api/forums/', forum)
+      .then((res) => { this.props.history.push('/forums/' + res.data._id) })
       .catch((err) => { console.log(err) })
   }
 
   render () {
     return (
       <div>
-        <h3>Respond to This Topic</h3>
+        <h3>Start A New Topic</h3>
         <div className='row'>
 
           <form className='col s12' onSubmit={this.handleSubmit}>
@@ -77,4 +75,4 @@ class NewContribution extends Component {
   }
 }
 
-export default NewContribution
+export default NewTopic

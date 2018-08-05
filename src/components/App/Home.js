@@ -1,11 +1,11 @@
 // Dependencies
-import React, { Component } from 'react'
+import React from 'react'
 
 // Style
-import './Home.css'
+import './App.css'
 
 // Home Component
-class Home extends Component {
+class Home extends React.Component {
   render () {
     return (
       <div>

@@ -1,11 +1,11 @@
 // React % Socket.io
-import React, { Component } from 'react'
+import React from 'react'
 
 // Style
-import './Contribution.css'
+import './Forums.css'
 
 // Contribution Component
-class Contribution extends Component {
+class Contribution extends React.Component {
   constructor (props) {
     super()
   }

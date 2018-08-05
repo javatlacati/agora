@@ -1,11 +1,11 @@
 // React
-import React, { Component } from 'react'
+import React from 'react'
 
 // Style
-import './Privacy.css'
+import './App.css'
 
 // Home Component
-class Privacy extends Component {
+class Privacy extends React.Component {
   render () {
     return (
       <div>

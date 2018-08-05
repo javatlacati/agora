@@ -1,9 +1,9 @@
 // Dependencies
-import React, { Component } from 'react'
+import React from 'react'
 import openSocket from 'socket.io-client'
 
 // API
-import API_URL from '../../URLS.js'
+import { API_URL } from '../../constants.js'
 
 // Style
 import './Chat.css'
@@ -12,7 +12,7 @@ import './Chat.css'
 const socket = openSocket(API_URL)
 
 // Chat Component
-class Chat extends Component {
+class Chat extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

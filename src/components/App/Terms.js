@@ -1,11 +1,11 @@
 // React
-import React, { Component } from 'react'
+import React from 'react'
 
 // Style
-import './Terms.css'
+import './App.css'
 
 // Home Component
-class Terms extends Component {
+class Terms extends React.Component {
   render () {
     return (
       <div>

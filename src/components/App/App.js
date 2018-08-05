@@ -1,5 +1,5 @@
 // Dependencies
-import React, {Component} from 'react'
+import React from 'react'
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import { Provider } from 'react-redux'
 
@@ -9,14 +9,14 @@ import store from '../../store'
 
 // Components
 // import Authorization from '../Authorization/Authorization'
-import NewTopic from '../Forum/NewTopic/NewTopic'
-import Forum from '../Forum/Forum/Forum'
-import ForumsContainer from '../Forum/ForumsContainer/ForumsContainer'
+import NewTopic from '../Forum/NewTopic'
+import Forum from '../Forum/Forum'
+import Forums from '../Forum/Forums'
 import Chat from '../Chat/Chat'
-import About from '../Static/About'
-import Terms from '../Static/Terms'
-import Privacy from '../Static/Privacy'
-import Home from '../Home/Home'
+import About from './About'
+import Terms from './Terms'
+import Privacy from './Privacy'
+import Home from './Home'
 import Announcement from '../Announcements/Announcement'
 import Announcements from '../Announcements/Announcements'
 
@@ -24,7 +24,7 @@ import Announcements from '../Announcements/Announcements'
 import {Navbar, NavItem} from 'react-materialize'
 import './App.css'
 
-class App extends Component {
+class App extends React.Component {
   constructor (props) {
     super()
     this.state = {
@@ -54,7 +54,7 @@ class App extends Component {
               <Switch >
                 <Route path='/forums/new' component={NewTopic} />
                 <Route path='/forums/:id' component={Forum} />
-                <Route path='/forums' component={ForumsContainer} />
+                <Route path='/forums' component={Forums} />
                 <Route path='/chat' component={Chat} />
                 <Route path='/announcements/:id' component={Announcement} />
                 <Route path='/announcements/' component={Announcements} />

@@ -8,7 +8,7 @@ import * as actionCreators from './actions/actionCreators'
 import rootReducer from './reducers/index'
 
 // Sample Data
-import { announcements, comments } from './data'
+import { announcements, comments } from './constants'
 
 // Default data
 const defaultState = { announcements, comments }

@@ -1,38 +1,46 @@
 // Dependencies
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 
+// Componenets
+import Card from './Card'
+
 // API
-import API_URL from '../../../URLS.js'
+import { API_URL } from '../../constants.js'
 
 // Style
-import './ForumsContainer.css'
+import './Forums.css'
 
 // ForumsContainer Component
-class ForumsContainer extends Component {
+class Forums extends React.Component {
   constructor (props) {
     super()
     this.state = {
       forums: []
     }
+    this.listForums = this.listForums.bind(this)
+    this.deleteForum = this.deleteForum.bind(this)
+  }
+
+  listForums () {
+    axios.get(API_URL + 'api/forums/')
+      .then((res) => { this.setState({forums: res.data}) })
+      .catch((err) => { console.log(err) })
+  }
+
+  deleteForum (e) {
+    axios.delete(API_URL + 'api/forums/' + e.target.dataset.id)
+      .then((res) => { this.listForums() })
+      .catch((err) => { console.log(err) })
   }
 
   componentDidMount () {
-    axios.get(API_URL + 'api/forums')
-      .then((res) => {
-        this.setState({
-          forums: res.data
-        })
-      })
-      .catch((err) => { console.log(err) })
+    this.listForums()
   }
 
   render () {
     let forums = this.state.forums.map((forum, index) => (
-      <li key={index} className='collection-item'>
-        <a href={'/forums/' + forum._id}>{forum.title}</a>
-        <p>{forum.description}</p>
-      </li>
+      <Card forum={forum} key={index} deleteForum={this.deleteForum} />
     ))
     return (
       <div>
@@ -53,4 +61,4 @@ class ForumsContainer extends Component {
   }
 }
 
-export default ForumsContainer
+export default Forums

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 
 // API
-import API_URL from '../../URLS.js'
+import { API_URL } from '../../constants.js'
 
 // Style
 import {Row, Input, Button} from 'react-materialize'

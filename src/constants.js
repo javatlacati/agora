@@ -1,3 +1,9 @@
+export const API_URL = 'http://agora.mikenabil.net/'
+
+export const AUTH_HEADER = {
+  headers: { 'Authorization': 'bearer ' + window.localStorage.getItem('jwt') }
+}
+
 export const announcements = [
   {
     'title': 'Party!!!!',
