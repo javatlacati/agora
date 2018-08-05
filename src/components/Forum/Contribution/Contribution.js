@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 // Style
-import '../../styles/Contribution.css'
+import './Contribution.css'
 
 // Contribution Component
 class Contribution extends Component {

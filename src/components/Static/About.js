@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 // Style
-import '../../styles/About.css'
+import './About.css'
 
 // Home Component
 class About extends Component {

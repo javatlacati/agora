@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 // Style
-import '../../styles/Terms.css'
+import './Terms.css'
 
 // Home Component
 class Terms extends Component {

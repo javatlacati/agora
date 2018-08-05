@@ -6,13 +6,13 @@ import axios from 'axios'
 import NewContribution from '../NewContribution/NewContribution'
 
 // API
-import API_URL from '../../URLS.js'
+import API_URL from '../../../URLS.js'
 
 // auth
-import AUTH_HEADER from '../../Auth.js'
+import AUTH_HEADER from '../../../Auth.js'
 
 // Style
-import '../../styles/Forum.css'
+import './Forum.css'
 
 // Components
 // import Contribution from '../Contribution/Contribution'

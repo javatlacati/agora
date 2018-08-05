@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 // API
-import API_URL from '../../URLS.js'
+import API_URL from '../../../URLS.js'
 
 // Style
-import '../../styles/NewTopic.css'
+import './NewContribution.css'
 
 // Home Component
-class NewTopic extends Component {
+class NewContribution extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -37,7 +37,6 @@ class NewTopic extends Component {
         'description': this.state.description
       }
     }).then((res) => {
-      console.log(res)
       console.log(res.data._id)
       this.props.history.push('/forums/' + res.data._id)
     //   return <Redirect to='/forums/'  />
@@ -48,7 +47,7 @@ class NewTopic extends Component {
   render () {
     return (
       <div>
-        <h3>Start A New Topic</h3>
+        <h3>Respond to This Topic</h3>
         <div className='row'>
 
           <form className='col s12' onSubmit={this.handleSubmit}>
@@ -78,4 +77,4 @@ class NewTopic extends Component {
   }
 }
 
-export default NewTopic
+export default NewContribution

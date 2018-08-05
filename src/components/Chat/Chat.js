@@ -1,10 +1,12 @@
-// React % Socket.io
+// Dependencies
 import React, { Component } from 'react'
 import openSocket from 'socket.io-client'
+
+// API
 import API_URL from '../../URLS.js'
 
 // Style
-import '../../styles/Chat.css'
+import './Chat.css'
 
 // Socket connection
 const socket = openSocket(API_URL)
@@ -46,8 +48,8 @@ class Chat extends Component {
         <ul className='collection' id='messages'>{messages}</ul>
         <form className='input-field' onSubmit={this.submitMessage}>
           <input type='text' className='validate' />
-          <label className='active' for='first_name2'>Your Message</label>
-          <button class='btn waves-effect black right waves-light' type='submit' name='action'>
+          <label className='active'>Your Message</label>
+          <button className='btn waves-effect black right waves-light' type='submit' name='action'>
             Submit<i className='material-icons right'>send</i>
           </button>
         </form>

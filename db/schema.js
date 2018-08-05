@@ -10,7 +10,7 @@ mongoose.Promise = Promise
 if (process.env.NODE_ENV === 'production') {
   mongoose.connect(process.env.MONGODB_URI)
 } else {
-  mongoose.connect('mongodb://localhost/agora', { useMongoClient: true })
+  mongoose.connect('mongodb://localhost/agora')
 }
 
 // Connecting to the database

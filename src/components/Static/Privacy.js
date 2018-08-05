@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 // Style
-import '../../styles/Privacy.css'
+import './Privacy.css'
 
 // Home Component
 class Privacy extends Component {

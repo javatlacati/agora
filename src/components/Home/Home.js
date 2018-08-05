@@ -1,9 +1,8 @@
-// React
+// Dependencies
 import React, { Component } from 'react'
 
 // Style
-import '../../styles/Home.css'
-// import {Col, Card, CardTitle} from 'react-materialize'
+import './Home.css'
 
 // Home Component
 class Home extends Component {
