@@ -8,6 +8,7 @@ const router = express.Router()
 // Lading the controllers
 const usersController = require('../controllers/users.js')
 const forumsController = require('../controllers/forums.js')
+const contributionsController = require('../controllers/contributions.js')
 
 // Authenticate User function
 // function authenticatedUser (req, res, next) {
@@ -19,16 +20,26 @@ const forumsController = require('../controllers/forums.js')
 // Routes
 
 /// ///////////////////////////////////////////
-// Forums API routes
+// Forums
 router.route('/api/forums/')
   .get(forumsController.index)
   .post(forumsController.post)
 
-// Show, Update & Delete
+// Forum
 router.route('/api/forums/:id')
   .get(forumsController.show)
   .put(forumsController.update)
   .delete(forumsController.destroy)
+
+// Contributions
+router.route('/api/contributions/')
+  .post(contributionsController.post)
+
+// Contribution
+router.route('/api/contributions/:id')
+  .get(contributionsController.show)
+  .put(contributionsController.update)
+  .delete(contributionsController.destroy)
 
 /// ///////////////////////////////////////////
 // User routes

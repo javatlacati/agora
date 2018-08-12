@@ -4,7 +4,6 @@ import axios from 'axios'
 
 // Components
 import Card from './Card'
-import NewContribution from './NewContribution'
 import Contribution from './Contribution'
 
 // API & Auth
@@ -18,40 +17,65 @@ class Forum extends React.Component {
   constructor (props) {
     super()
     this.state = {
-      forum: {}
+      forum: {},
+      contributions: []
     }
     this.deleteForum = this.deleteForum.bind(this)
+    this.getForum = this.getForum.bind(this)
+    this.getContributions = this.getContributions.bind(this)
+    this.deleteContribution = this.deleteContribution.bind(this)
+  }
+
+  getForum () {
+    let path = API_URL + 'api/forums/' + this.props.match.params.id
+    axios.get(path, AUTH_HEADER)
+      .then((res) => { this.setState({ forum: res.data }) })
+      .catch((err) => { console.log(err) })
+  }
+
+  getContributions () {
+    let path = API_URL + 'api/contributions/' + this.props.match.params.id
+    axios.get(path, AUTH_HEADER)
+      .then((res) => { this.setState({ contributions: res.data || [] }) })
+      .catch((err) => { console.log(err) })
   }
 
   deleteForum (e) {
-    axios.delete(API_URL + 'api/forums/' + e.target.dataset.id)
+    let path = API_URL + 'api/forums/' + e.target.dataset.id
+    axios.delete(path, AUTH_HEADER)
       .then((res) => { this.props.history.push('/forums/') })
       .catch((err) => { console.log(err) })
   }
 
-  componentDidMount () {
-    let path = API_URL + 'api/forums/' + this.props.match.params.id
-    axios.get(path, AUTH_HEADER)
-      .then((res) => {
-        this.setState({
-          forum: res.data
-        })
-      })
+  deleteContribution (e) {
+    e.preventDefault()
+    axios.delete(API_URL + 'api/contributions/' + e.target.dataset.id)
+      .then((res) => { this.getContributions() })
       .catch((err) => { console.log(err) })
   }
 
+  componentDidMount () {
+    this.getForum()
+    this.getContributions()
+  }
+
   render () {
-    // let contributions = this.state.forum.contributions.map((contribution, i) => {
-    //   return (<Contribution author={contribution.author} content={contribution.content} key={i} />)
-    // })
+    let contributions = this.state.contributions.length <= 0
+      ? <p>&nbsp; &nbsp; &nbsp; &nbsp;No responses to this topic so far.</p>
+      : this.state.contributions.map((contribution, i) => {
+        return (
+          <Contribution
+            contribution={contribution}
+            key={i}
+            deleteContribution={this.deleteContribution} />
+        )
+      })
     return (
       <div>
-        <Card forum={this.state.forum} deleteForum={this.deleteForum} />
-        <NewContribution />
-        <ul>
-          <h4>List of Contributions:</h4>
-          <Contribution author='Mike' content='Hi' />
-          {/* {contributions} */}
+        <Card {...this.props} forum={this.state.forum} deleteForum={this.deleteForum} getContributions={this.getContributions} />
+        <ul className='collection'>
+          <h4>&nbsp; &nbsp;Responses:</h4><hr />
+          {contributions}
         </ul>
       </div>
     )

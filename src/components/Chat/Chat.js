@@ -40,7 +40,7 @@ class Chat extends React.Component {
         <p>{message.body} <br />
           Created at: {message.createdAt}
         </p>
-        <a href='#!' className='secondary-content'><i className='material-icons'>grade</i></a>
+        {/* <a href='#!' className='secondary-content'><i className='material-icons'>grade</i></a> */}
       </li>
     ))
     return (

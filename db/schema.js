@@ -10,7 +10,7 @@ mongoose.Promise = Promise
 if (process.env.NODE_ENV === 'production') {
   mongoose.connect(process.env.MONGODB_URI)
 } else {
-  mongoose.connect('mongodb://localhost/agora')
+  mongoose.connect('mongodb://localhost:27017/agora', { useNewUrlParser: true })
 }
 
 // Connecting to the database
@@ -22,7 +22,7 @@ db.once('open', () => { console.log('database has been connected!') })
 const Schema = mongoose.Schema
 
 // The User Schema
-var UserSchema = mongoose.Schema({
+const UserSchema = new Schema({
   local: {
     email: {type: String, unique: true, required: false, sparse: true, trim: true},
     password: {type: String, unique: false, required: false}
@@ -71,6 +71,7 @@ const ForumSchema = new Schema({
   // uuid: {type: String, unique: true, required: true, default: uuid},
   title: {type: String, unique: false, required: true, maxlength: [50, `Error: Too long title. Titles shouldn't exceed 50 charachters`]},
   description: {type: String, unique: false, required: true},
+  header: {type: String, unique: false, required: true, default: 'https://www.teachermagazine.com.au/files/ce-image/cache/1c03ffc10fd4ef6a/Computing-programming-and-coding-in-schools_855_513_48.jpg'},
   deleted: {type: Boolean, required: true, unique: false, default: false}
 }, {
   timestamps: true
@@ -80,7 +81,7 @@ const ForumSchema = new Schema({
 const ContributionSchema = new Schema({
   // uuid: {type: String, unique: true, required: true, default: uuid},
   author: {type: String, unique: false, required: true},
-  comment: {type: String, unique: false, required: true},
+  text: {type: String, unique: false, required: true},
   forumId: {type: String, unique: false, required: true},
   deleted: {type: Boolean, required: true, unique: false, default: false}
 })

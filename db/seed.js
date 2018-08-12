@@ -9,24 +9,21 @@ var userData = require('./userData')
 const User = Schema.User
 const Forum = Schema.Forum
 const Contribution = Schema.Contribution
+const Message = Schema.Message
 
 // Seeding the database
-User.remove({}).then(function () {
+User.remove({}).then(() => {
   User.collection.insert(userData).then(function () {
     process.exit()
   })
 })
 
 // Clear the database
-Forum.remove({}).then(function () { process.exit() })
 // Forum.remove({}).then(function () {
 //   Forum.collection.insert(forumData).then(function () {
 //     process.exit()
 //   })
 // })
-
-Contribution.remove({}, err => {
-  if (err) {
-    console.log(err)
-  }
-})
+Forum.remove({}).then(() => { process.exit() })
+Contribution.remove({}).then(() => { process.exit() })
+Message.remove({}).then(() => { process.exit() })

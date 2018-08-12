@@ -40,7 +40,7 @@ class Forums extends React.Component {
 
   render () {
     let forums = this.state.forums.map((forum, index) => (
-      <Card forum={forum} key={index} deleteForum={this.deleteForum} />
+      <Card forum={forum} key={index} deleteForum={this.deleteForum} {...this.props} />
     ))
     return (
       <div>
@@ -52,8 +52,8 @@ class Forums extends React.Component {
         </button>
         <div className='clearfix' />
 
-        <h3>Here is a list of our forums:</h3>
-        <ul className='collection' >
+        <h3>Join our Conversations!</h3>
+        <ul className='row' >
           {forums}
         </ul>
       </div>

@@ -13,8 +13,9 @@ class NewContribution extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      title: '',
-      description: ''
+      author: '',
+      text: '',
+      forumId: this.props.match.params.id
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,40 +29,46 @@ class NewContribution extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    document.getElementById('title').disabled = true
-    document.getElementById('description').disabled = true
+    document.getElementById('author').disabled = true
+    document.getElementById('text').disabled = true
     document.getElementById('submit-button').disabled = true
-    axios.post(API_URL + 'api/forums/', {
-      forum: {
-        'title': this.state.title,
-        'description': this.state.description
+    let contribution = {
+      contribution: {
+        'author': this.state.author,
+        'text': this.state.text,
+        'forumId': this.state.forumId
       }
-    }).then((res) => {
-      console.log(res.data._id)
-      this.props.history.push('/forums/' + res.data._id)
-    //   return <Redirect to='/forums/'  />
-    })
+    }
+    axios.post(API_URL + 'api/contributions/', contribution)
+      .then((res) => {
+        this.props.getContributions()
+        document.getElementById('author').disabled = false
+        document.getElementById('text').disabled = false
+        document.getElementById('submit-button').disabled = false
+        this.refs.contributionForm.reset()
+      })
       .catch((err) => { console.log(err) })
   }
 
   render () {
     return (
       <div>
-        <h3>Respond to This Topic</h3>
+        <hr />
+        <h5>Your Response</h5>
         <div className='row'>
 
-          <form className='col s12' onSubmit={this.handleSubmit}>
+          <form className='col s12' ref='contributionForm' onSubmit={this.handleSubmit}>
             <div className='row'>
               <div className='input-field col s12'>
-                <input type='text' className='validate' id='title' name='title' onChange={this.handleInputChange} />
-                <label>Title</label>
+                <input type='text' className='validate' id='author' name='author' ref='author' onChange={this.handleInputChange} />
+                <label>Author</label>
               </div>
             </div>
 
             <div className='row'>
               <div className='input-field col s12'>
-                <textarea type='text' className='materialize-textarea validate' id='description' name='description' onChange={this.handleInputChange} />
-                <label>Description</label>
+                <textarea type='text' className='materialize-textarea validate' id='text' name='text' ref='text' onChange={this.handleInputChange} />
+                <label>Text</label>
               </div>
             </div>
 
