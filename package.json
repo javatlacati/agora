@@ -63,7 +63,8 @@
     "security": "nsp check",
     "localtunnel": "lt --port 8000",
     "share": "npm-run-all -p start-all localtunnel",
-    "deploy": "echo \"Not Implemented Yet...\""
+    "deploy": "echo \"Not Implemented Yet...\"",
+    "seed": "heroku run node db/seed.js"
   },
   "repository": {
     "type": "git",
