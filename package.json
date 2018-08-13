@@ -63,7 +63,7 @@
     "security": "nsp check",
     "localtunnel": "lt --port 8000",
     "share": "npm-run-all -p start-all localtunnel",
-    "deploy": "git push origin master; git push heroku master",
+    "deploy": "git push origin master; echo \"*******\"; git push heroku master",
     "seed": "heroku run node db/seed.js"
   },
   "repository": {
