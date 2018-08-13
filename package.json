@@ -47,6 +47,7 @@
     "redux": "^4.0.0"
   },
   "scripts": {
+    "separator": "echo \"********************************************\"",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "build-js": "react-scripts build",
@@ -63,8 +64,11 @@
     "security": "nsp check",
     "localtunnel": "lt --port 8000",
     "share": "npm-run-all -p start-all localtunnel",
-    "deploy": "git push origin master; echo \"*******\"; git push heroku master",
-    "seed": "heroku run node db/seed.js"
+    "deploy": "git push origin master; yarn run separator; git push heroku master; yarn run separator",
+    "seed": "heroku run node db/seed.js",
+    "presave": "yarn run build; yarn run separator",
+    "save": "git add .;git commit",
+    "postsave": "yarn run separator; yarn run deploy; yarn run separator; yarn run seed; yarn run separator"
   },
   "repository": {
     "type": "git",
