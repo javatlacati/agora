@@ -52,7 +52,7 @@ class Forums extends React.Component {
         </button>
         <div className='clearfix' />
 
-        <h3>Join our Conversations!</h3>
+        <h3>Our active topics</h3>
         <ul className='row' >
           {forums}
         </ul>

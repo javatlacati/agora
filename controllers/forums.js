@@ -1,8 +1,5 @@
-// Loading the schema
-const Schema = require('../db/schema.js')
-
 // Loading the model
-const Forum = Schema.Forum
+const Forum = require('../db/Models/Topic.js')
 
 // The Forum methods
 module.exports = {

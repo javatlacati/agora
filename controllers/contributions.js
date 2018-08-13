@@ -1,8 +1,5 @@
-// Loading the schema
-const Schema = require('../db/schema.js')
-
 // Loading the model
-const Contribution = Schema.Contribution
+const Contribution = require('../db/Models/Contribution.js')
 
 // The Contributions methods
 module.exports = {

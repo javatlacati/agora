@@ -10,6 +10,7 @@ class Terms extends React.Component {
     return (
       <div>
         <h1>Our Terms of Service</h1>
+        <p>TBA</p>
       </div>
     )
   }

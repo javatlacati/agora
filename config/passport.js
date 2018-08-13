@@ -8,8 +8,7 @@ const JWTStrategy = passportJWT.Strategy
 const ExtractJWT = passportJWT.ExtractJwt
 
 // Calling the User model
-const Schema = require('../db/schema.js')
-const User = Schema.User
+const User = require('../db/Models/User.js')
 
 module.exports = function (passport) {
   // passport.serializeUser(function (user, done) {

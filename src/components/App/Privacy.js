@@ -10,6 +10,7 @@ class Privacy extends React.Component {
     return (
       <div>
         <h1>Agora's privacy Policy</h1>
+        <p>TBA</p>
       </div>
     )
   }

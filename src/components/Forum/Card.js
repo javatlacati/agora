@@ -24,10 +24,13 @@ class Card extends React.Component {
             <Link to='#' className='black-text' data-id={forum._id} onClick={deleteForum}>Delete</Link>
             {this.props.match.params.id ? <div><br /><NewContribution {...this.props} /></div> : ''}
           </div>
-          <div className='card-reveal'>
-            <span className='card-title grey-text text-darken-4'>Card Title<i className='material-icons right'>close</i></span>
-            <p>{forum.description}</p>
-          </div>
+          {this.props.match.params.id
+            ? ''
+            : <div className='card-reveal'>
+              <span className='card-title grey-text text-darken-4'>{forum.title}<i className='material-icons right'>close</i></span>
+              <p>{forum.description}</p>
+            </div>
+          }
         </div>
       </div>
     )

@@ -10,6 +10,7 @@ class About extends React.Component {
     return (
       <div>
         <h1>About Agora</h1>
+        <p>TBA</p>
       </div>
     )
   }

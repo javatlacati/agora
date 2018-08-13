@@ -1,11 +1,8 @@
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-// Loading the schema
-// const Schema = require('../db/schema.js')
-
 // Loading the model
-// const User = Schema.User
+// const User = require('../db/Models/User.js')
 
 module.exports = {
   // POST /signup

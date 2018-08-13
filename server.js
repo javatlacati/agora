@@ -61,8 +61,7 @@ const server = http.createServer(app)
 const io = socketIO.listen(server)
 
 // Schema & Model for Socket.io
-const Schema = require('./db/schema.js')
-const Message = Schema.Message
+const Message = require('./db/Models/Message.js')
 
 // Socket.io Users
 let users = 0

@@ -1,29 +1,26 @@
-// Connecting with the schema
-const Schema = require('./schema.js')
+// Calling the models
+const Contribution = require('./Models/Contribution')
+const Message = require('./Models/Message')
+const Forum = require('./Models/Topic')
+const User = require('./Models/User')
 
 // Loading the user data
-var userData = require('./userData')
-// var forumData = require('./forumData')
-
-// Calling the models
-const User = Schema.User
-const Forum = Schema.Forum
-const Contribution = Schema.Contribution
-const Message = Schema.Message
+const userData = require('./userData')
 
 // Seeding the database
+Contribution.remove({}).then(() => { process.exit() })
+Message.remove({}).then(() => { process.exit() })
+Forum.remove({}).then(() => { process.exit() })
 User.remove({}).then(() => {
+  console.log('here')
   User.collection.insert(userData).then(function () {
     process.exit()
   })
 })
 
-// Clear the database
+// const forumData = require('./forumData')
 // Forum.remove({}).then(function () {
 //   Forum.collection.insert(forumData).then(function () {
 //     process.exit()
 //   })
 // })
-Forum.remove({}).then(() => { process.exit() })
-Contribution.remove({}).then(() => { process.exit() })
-Message.remove({}).then(() => { process.exit() })

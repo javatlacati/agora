@@ -18,7 +18,7 @@ class Comments extends React.Component {
           Created at: Yesterday {/* {comment.createdAt} */}
         </p>
         <a className='secondary-content' onClick={this.props.removeComment.bind(null, this.props.match.params.id, i)}>
-          <i className='material-icons'>delete_forever</i>
+          <i className='material-icons black-text grab'>delete_forever</i>
         </a>
       </li>
     )
