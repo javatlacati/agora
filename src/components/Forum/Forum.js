@@ -10,7 +10,7 @@ import Contribution from './Contribution'
 import { API_URL, AUTH_HEADER } from '../../constants.js'
 
 // Style
-import './Forums.css'
+import './Forums.scss'
 
 // Forum Component
 class Forum extends React.Component {
@@ -18,7 +18,8 @@ class Forum extends React.Component {
     super()
     this.state = {
       forum: {},
-      contributions: []
+      contributions: [],
+      dataReady: false
     }
     this.deleteForum = this.deleteForum.bind(this)
     this.getForum = this.getForum.bind(this)
@@ -29,7 +30,7 @@ class Forum extends React.Component {
   getForum () {
     let path = API_URL + 'api/forums/' + this.props.match.params.id
     axios.get(path, AUTH_HEADER)
-      .then((res) => { this.setState({ forum: res.data }) })
+      .then((res) => { this.setState({ forum: res.data, dataReady: true }) })
       .catch((err) => { console.log(err) })
   }
 
@@ -60,6 +61,9 @@ class Forum extends React.Component {
   }
 
   render () {
+    let card = (this.state.dataReady)
+      ? <Card {...this.props} forum={this.state.forum} deleteForum={this.deleteForum} getContributions={this.getContributions} />
+      : ''
     let contributions = this.state.contributions.length <= 0
       ? <p>&nbsp; &nbsp; &nbsp; &nbsp;No responses to this topic so far.</p>
       : this.state.contributions.map((contribution, i) => {
@@ -72,7 +76,7 @@ class Forum extends React.Component {
       })
     return (
       <div>
-        <Card {...this.props} forum={this.state.forum} deleteForum={this.deleteForum} getContributions={this.getContributions} />
+        {card}
         <ul className='collection'>
           <h4>&nbsp; &nbsp;Responses:</h4><hr />
           {contributions}

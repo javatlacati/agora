@@ -9,6 +9,8 @@ const router = express.Router()
 const usersController = require('../controllers/users.js')
 const forumsController = require('../controllers/forums.js')
 const contributionsController = require('../controllers/contributions.js')
+const announcementsController = require('../controllers/announcements.js')
+const commentsController = require('../controllers/comments.js')
 
 // Authenticate User function
 // function authenticatedUser (req, res, next) {
@@ -42,7 +44,20 @@ router.route('/api/contributions/:id')
   .delete(contributionsController.destroy)
 
 /// ///////////////////////////////////////////
-// User routes
+// Announcements
+router.route('/api/announcements/')
+  .get(announcementsController.index)
+  .put(announcementsController.update)
+
+/// ///////////////////////////////////////////
+// Comments
+router.route('/api/comments/')
+  .get(commentsController.index)
+  .post(commentsController.post)
+  .delete(commentsController.destroy)
+
+/// ///////////////////////////////////////////
+// Users
 
 router.route('/auth/signup')
   .post(usersController.postSignup)

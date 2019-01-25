@@ -7,7 +7,7 @@ import { mapStateToProps, mapDispachToProps } from '../../store'
 import Card from './Card'
 
 // Style
-import './Announcements.css'
+import './Announcements.scss'
 
 class Main extends React.Component {
   render () {

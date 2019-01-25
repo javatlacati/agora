@@ -8,7 +8,7 @@ import Card from './Card'
 import Comments from './Comments'
 
 // Style
-import './Announcements.css'
+import './Announcements.scss'
 
 // Home Component
 class AnnouncementShow extends React.Component {

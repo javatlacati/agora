@@ -71,7 +71,7 @@ io.on('connection', (socket) => {
   users++
   console.log(`${users} users connected.`)
   Message.find({}).then(messages => { io.emit('initial messages', messages) })
-  socket.on('chat message', (msg) => { Message.create({body: msg}).then((msg) => io.emit('chat message', msg)) })
+  socket.on('chat message', (msg) => { Message.create({ body: msg }).then((msg) => io.emit('chat message', msg)) })
   socket.on('disconnect', () => { users--; console.log(`1 User disconnected. ${users} Users remain connected.`) })
 })
 

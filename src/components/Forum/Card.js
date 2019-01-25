@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 // Components
@@ -36,5 +37,25 @@ class Card extends React.Component {
     )
   }
 }
+
+// Card.propTypes = {
+//   forum: PropTypes.shape({
+//     _id: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired,
+//     header: PropTypes.string.isRequired,
+//     description: PropTypes.string.isRequired
+//   }).isRequired,
+//   deleteForum: PropTypes.func.isRequired,
+//   getContributions: PropTypes.func.isRequired
+// }
+//
+// Card.defaultProps = {
+//   forum: {
+//     _id: '000000',
+//     title: 'No Title',
+//     header: 'https://www.teachermagazine.com.au/files/ce-image/cache/1c03ffc10fd4ef6a/Computing-programming-and-coding-in-schools_855_513_48.jpg',
+//     description: 'No Description'
+//   }
+// }
 
 export default Card

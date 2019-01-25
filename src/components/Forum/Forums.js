@@ -9,7 +9,7 @@ import Card from './Card'
 import { API_URL } from '../../constants.js'
 
 // Style
-import './Forums.css'
+import './Forums.scss'
 
 // ForumsContainer Component
 class Forums extends React.Component {
@@ -24,7 +24,7 @@ class Forums extends React.Component {
 
   listForums () {
     axios.get(API_URL + 'api/forums/')
-      .then((res) => { this.setState({forums: res.data}) })
+      .then((res) => { this.setState({ forums: res.data }) })
       .catch((err) => { console.log(err) })
   }
 

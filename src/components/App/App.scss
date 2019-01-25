@@ -1,8 +1,37 @@
-.nav {
-  margin-bottom: 50px;
+nav {
+  margin-bottom: 10px;
 }
 
 .grab {
   cursor: -webkit-grab;
   cursor: grab;
+}
+
+.auth-panel {
+  border-left: black 1px solid;
+}
+
+.home img {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.image-container {
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 993px) {
+  .auth-panel {
+    height: 88vh;
+    padding-top: 10vh;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .auth-panel {
+    // padding-right: 10%;
+    // border-bottom: black 1px solid;
+  }
 }

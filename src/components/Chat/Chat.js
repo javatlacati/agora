@@ -6,7 +6,7 @@ import openSocket from 'socket.io-client'
 import { API_URL } from '../../constants.js'
 
 // Style
-import './Chat.css'
+import './Chat.scss'
 
 // Socket connection
 const socket = openSocket(API_URL)
@@ -22,8 +22,8 @@ class Chat extends React.Component {
   }
 
   componentDidMount () {
-    socket.on('initial messages', (messages) => { this.setState({messages: messages}) })
-    socket.on('chat message', (msg) => { this.setState({messages: this.state.messages.concat(msg)}) })
+    socket.on('initial messages', (messages) => { this.setState({ messages: messages }) })
+    socket.on('chat message', (msg) => { this.setState({ messages: this.state.messages.concat(msg) }) })
   }
 
   submitMessage (e) {

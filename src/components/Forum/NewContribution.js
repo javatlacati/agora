@@ -6,7 +6,7 @@ import axios from 'axios'
 import { API_URL } from '../../constants.js'
 
 // Style
-import './Forums.css'
+import './Forums.scss'
 
 // Home Component
 class NewContribution extends React.Component {

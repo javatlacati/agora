@@ -19,6 +19,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.2.5",
     "morgan": "^1.9.0",
+    "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.2",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
@@ -27,48 +28,48 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
     "passport-twitter": "^1.0.4",
-    "prop-types": "^15.6.0",
-    "redux-saga": "^0.16.0",
     "socket.io": "^2.0.4",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "editorconfig": "^0.15.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "jsdoc": "^3.5.5",
     "localtunnel": "^1.8.3",
     "mocha": "^5.2.0",
-    "node-sass-chokidar": "^1.3.3",
-    "nsp": "^3.1.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "nodemon": "^1.18.9",
+    "prop-types": "^15.6.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-materialize": "^2.3.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0"
+    "react-scripts": "^2.1.3",
+    "react-test-renderer": "^16.7.0",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "standard": "^12.0.1"
   },
   "scripts": {
     "separator": "echo \"********************************************\"",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prestart": "echo \"Starting...\"",
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "start-server": "npm-run-all -p prestart server",
-    "start-react": "PORT=5000 react-scripts start",
-    "start-mongod": "mongod",
-    "start-all": "npm-run-all -p watch-css start-mongod start-server start-react",
-    "security": "nsp check",
+    "server": "npx nodemon server.js",
+    "react": "PORT=5000 react-scripts start",
+    "start-all": "npm-run-all -p server react",
+    "security": "yarn audit fix",
     "localtunnel": "lt --port 8000",
     "share": "npm-run-all -p start-all localtunnel",
     "deploy": "git push origin master; yarn run separator; git push heroku master; yarn run separator",
-    "seed": "heroku run node db/seed.js",
+    "seed": "heroku run node db/seed.js; yarn run separator",
     "presave": "yarn run build; yarn run separator",
     "save": "git add .;git commit",
-    "postsave": "yarn run separator; yarn run deploy; yarn run separator; yarn run seed; yarn run separator"
+    "postsave": "yarn run separator; yarn run deploy; yarn run seed"
   },
   "repository": {
     "type": "git",
@@ -80,5 +81,11 @@
   "bugs": {
     "url": "https://github.com/maikelnabil/agora/issues"
   },
-  "homepage": "http://agora.mikenabil.net/"
+  "homepage": "http://agora.mikenabil.net/",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

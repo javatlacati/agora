@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react'
-import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 // Store
@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import store from '../../store'
 
 // Components
-// import Authorization from '../Authorization/Authorization'
+import Authorization from '../Authorization/Authorization'
 import NewTopic from '../Forum/NewTopic'
 import Forum from '../Forum/Forum'
 import Forums from '../Forum/Forums'
@@ -21,8 +21,8 @@ import Announcement from '../Announcements/Announcement'
 import Announcements from '../Announcements/Announcements'
 
 // Style
-import {Navbar, NavItem} from 'react-materialize'
-import './App.css'
+import { Navbar, NavItem } from 'react-materialize'
+import './App.scss'
 
 class App extends React.Component {
   constructor (props) {
@@ -39,7 +39,7 @@ class App extends React.Component {
       <Provider store={store}>
         {/* <Router history={history}> */}
         <Router>
-          <div >
+          <div>
             <Navbar brand='&nbsp;&nbsp;&nbsp;Agora' href='/' right className='black nav' >
               {/* <NavItem inactive='true'> Sign In </NavItem> */}
               <NavItem href='/forums'> Forums </NavItem>
@@ -49,21 +49,27 @@ class App extends React.Component {
               <NavItem href='/terms'> Terms </NavItem>
               <NavItem href='/privacy'> Privacy </NavItem>
             </Navbar>
-            <main className='container' >
-              {/* <Authorization /> */}
-              <Switch >
-                <Route path='/forums/new' component={NewTopic} />
-                <Route path='/forums/:id' component={Forum} />
-                <Route path='/forums' component={Forums} />
-                <Route path='/chat' component={Chat} />
-                <Route path='/announcements/:id' component={Announcement} />
-                <Route path='/announcements/' component={Announcements} />
-                <Route path='/about' component={About} />
-                <Route path='/terms' component={Terms} />
-                <Route path='/privacy' component={Privacy} />
-                <Route path='/' component={Home} />
-                <Route path='/*' render={() => <Redirect from='*' to='/' />} />
-              </Switch>
+            <main className='container-fuid' >
+              <div className='row'>
+                <div className='col s12 m12 l3 push-l9 auth-panel'>
+                  <Authorization />
+                </div>
+                <div className='col s12 m12 l9 pull-l3'>
+                  <Switch >
+                    <Route path='/forums/new' component={NewTopic} />
+                    <Route path='/forums/:id' component={Forum} />
+                    <Route path='/forums' component={Forums} />
+                    <Route path='/chat' component={Chat} />
+                    <Route path='/announcements/:id' component={Announcement} />
+                    <Route path='/announcements/' component={Announcements} />
+                    <Route path='/about' component={About} />
+                    <Route path='/terms' component={Terms} />
+                    <Route path='/privacy' component={Privacy} />
+                    <Route path='/' component={Home} />
+                    <Route path='/*' render={() => <Redirect from='*' to='/' />} />
+                  </Switch>
+                </div>
+              </div>
             </main>
           </div>
         </Router>

@@ -1,9 +1,12 @@
 // React
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 // Components
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+
+// Style
+import './Authorization.scss'
 
 class Authorization extends Component {
   constructor (props) {
@@ -28,12 +31,14 @@ class Authorization extends Component {
   }
 
   render () {
-    let toRender = (this.state.hasAccount)
-      ? <SignIn /> : <SignUp />
     return (
       <div>
-        <h2><a onClick={this.getSignIn}>Sign In</a> | <a onClick={this.getSignUp}>Sign Up</a></h2>
-        {toRender}
+        <ul className='tabs'>
+          <li className='tab col s6'><a className='active black-text' href='#sign-in-tab'>Sign In</a></li>
+          <li className='tab col s6'><a className='black-text' href='#sign-up-tab'>Sign Up</a></li>
+        </ul>
+        <div id='sign-in-tab' className='col s12'><SignIn /></div>
+        <div id='sign-up-tab' className='col s12'><SignUp /></div>
       </div>
     )
   }

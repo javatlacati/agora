@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Style
-import './Forums.css'
+import './Forums.scss'
 
 // Contribution Component
 class Contribution extends React.Component {
@@ -14,9 +14,9 @@ class Contribution extends React.Component {
         <p>{this.props.contribution.text}<br />
           {/* Created At: Now */}
         </p>
-        <a className='secondary-content'>
+        <span className='secondary-content'>
           <i className='material-icons black-text grab' onClick={this.props.deleteContribution} data-id={this.props.contribution._id}>delete_forever</i>
-        </a>
+        </span>
       </li>
     )
   }

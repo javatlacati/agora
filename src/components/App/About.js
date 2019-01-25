@@ -1,11 +1,8 @@
 // React
 import React from 'react'
 
-// Style
-import './App.css'
-
 // Home Component
-class About extends React.Component {
+class About extends React.PureComponent {
   render () {
     return (
       <div>
