@@ -10,6 +10,10 @@ import Card from './Card'
 import './Announcements.scss'
 
 class Main extends React.Component {
+  componentDidMount () {
+    document.title = 'Agora: Announcements'
+  }
+
   render () {
     return (
       <div>

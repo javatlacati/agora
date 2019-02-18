@@ -1,8 +1,12 @@
 // React
 import React from 'react'
 
-// Home Component
+// About Component
 class About extends React.PureComponent {
+  componentDidMount () {
+    document.title = 'About Agora'
+  }
+
   render () {
     return (
       <div>

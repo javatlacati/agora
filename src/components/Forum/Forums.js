@@ -36,6 +36,7 @@ class Forums extends React.Component {
 
   componentDidMount () {
     this.listForums()
+    document.title = 'Agora: Forums'
   }
 
   render () {

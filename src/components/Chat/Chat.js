@@ -24,6 +24,7 @@ class Chat extends React.Component {
   componentDidMount () {
     socket.on('initial messages', (messages) => { this.setState({ messages: messages }) })
     socket.on('chat message', (msg) => { this.setState({ messages: this.state.messages.concat(msg) }) })
+    document.title = `Agora: Chat`
   }
 
   submitMessage (e) {

@@ -1,8 +1,12 @@
 // React
 import React from 'react'
 
-// Home Component
+// Privacy Component
 class Privacy extends React.PureComponent {
+  componentDidMount () {
+    document.title = 'Agora: Privacy Policy'
+  }
+
   render () {
     return (
       <div>

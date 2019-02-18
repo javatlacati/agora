@@ -30,7 +30,10 @@ class Forum extends React.Component {
   getForum () {
     let path = API_URL + 'api/forums/' + this.props.match.params.id
     axios.get(path, AUTH_HEADER)
-      .then((res) => { this.setState({ forum: res.data, dataReady: true }) })
+      .then((res) => {
+        this.setState({ forum: res.data, dataReady: true })
+        setTimeout(() => { document.title = `Agora: ${this.state.forum.title}` }, 1000)
+      })
       .catch((err) => { console.log(err) })
   }
 

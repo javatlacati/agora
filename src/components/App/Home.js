@@ -5,6 +5,10 @@ const image = require('./images/Discurso_funebre_pericles.png')
 
 // Home Component
 class Home extends React.Component {
+  componentDidMount () {
+    document.title = 'Agora: Home'
+  }
+
   render () {
     return (
       <div className='home'>

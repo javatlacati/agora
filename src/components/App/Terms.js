@@ -1,8 +1,12 @@
 // React
 import React from 'react'
 
-// Home Component
+// Terms Component
 class Terms extends React.PureComponent {
+  componentDidMount () {
+    document.title = 'Agora: Terms of Service'
+  }
+
   render () {
     return (
       <div>
