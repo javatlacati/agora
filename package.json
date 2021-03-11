@@ -17,7 +17,7 @@
     "http": "^0.0.0",
     "jsonwebtoken": "^8.1.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.2.5",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.0",
     "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.2",
